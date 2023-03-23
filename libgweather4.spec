@@ -2,19 +2,23 @@
 # Conditional build:
 %bcond_without	apidocs		# gi-docgen generated API documentation
 %bcond_without	vala		# Vala API
-%bcond_with	libsoup3	# libsoup3 instead of libsoup 2.x (must match geocode-glib)
+%bcond_without	libsoup3	# libsoup3/geocode-glib2 instead of libsoup 2.x/geocode-glib
 
 Summary:	Library to access weather information from online services for numerous locations
 Summary(pl.UTF-8):	Biblioteka dostępu do informacji pogodowych z serwisów internetowych dla różnych miejsc
 Name:		libgweather4
-Version:	4.0.0
+Version:	4.2.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
-Source0:	https://download.gnome.org/sources/libgweather/4.0/libgweather-%{version}.tar.xz
-# Source0-md5:	2aa2708dfde3481c87da3d7ea27110da
+Source0:	https://download.gnome.org/sources/libgweather/4.2/libgweather-%{version}.tar.xz
+# Source0-md5:	4c0c46102dcb5e813ff698e5f713e4bb
 URL:		https://wiki.gnome.org/Projects/LibGWeather
+%if %{with libsoup3}
+BuildRequires:	geocode-glib2-devel
+%else
 BuildRequires:	geocode-glib-devel
+%endif
 BuildRequires:	gettext-tools >= 0.18
 %{?with_apidocs:BuildRequires:	gi-docgen >= 2021.6}
 BuildRequires:	glib2-devel >= 1:2.68.0
@@ -25,7 +29,7 @@ BuildRequires:	libsoup3-devel >= 3.0.0
 BuildRequires:	libsoup-devel >= 2.44.0
 %endif
 BuildRequires:	libxml2-devel >= 1:2.6.30
-BuildRequires:	meson >= 0.55.0
+BuildRequires:	meson >= 0.57.0
 BuildRequires:	ninja >= 1.5
 BuildRequires:	pkgconfig >= 1:0.19
 BuildRequires:	python3 >= 1:3
@@ -120,7 +124,7 @@ API biblioteki libgweather dla języka Vala.
 %meson build \
 	-Denable_vala=%{!?with_vala:false}%{?with_vala:true} \
 	%{?with_apidocs:-Dgtk_doc=true} \
-	%{?with_libsoup3:-Dsoup2=false} \
+	%{!?with_libsoup3:-Dsoup2=true} \
 	-Dzoneinfo_dir=%{_datadir}/zoneinfo
 
 %ninja_build -C build
