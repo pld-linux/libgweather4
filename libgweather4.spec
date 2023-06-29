@@ -123,7 +123,7 @@ API biblioteki libgweather dla języka Vala.
 %build
 %meson build \
 	-Denable_vala=%{!?with_vala:false}%{?with_vala:true} \
-	%{?with_apidocs:-Dgtk_doc=true} \
+	-Dgtk_doc=%{__true_false apidocs} \
 	%{!?with_libsoup3:-Dsoup2=true} \
 	-Dzoneinfo_dir=%{_datadir}/zoneinfo
 
