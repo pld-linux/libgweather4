@@ -7,12 +7,12 @@
 Summary:	Library to access weather information from online services for numerous locations
 Summary(pl.UTF-8):	Biblioteka dostępu do informacji pogodowych z serwisów internetowych dla różnych miejsc
 Name:		libgweather4
-Version:	4.2.0
+Version:	4.4.0
 Release:	1
 License:	GPL v2+
 Group:		X11/Libraries
-Source0:	https://download.gnome.org/sources/libgweather/4.2/libgweather-%{version}.tar.xz
-# Source0-md5:	4c0c46102dcb5e813ff698e5f713e4bb
+Source0:	https://download.gnome.org/sources/libgweather/4.4/libgweather-%{version}.tar.xz
+# Source0-md5:	bba9065a75a7482be21d0427a12233c0
 URL:		https://wiki.gnome.org/Projects/LibGWeather
 %if %{with libsoup3}
 BuildRequires:	geocode-glib2-devel
