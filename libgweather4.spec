@@ -35,7 +35,7 @@ BuildRequires:	pkgconfig >= 1:0.19
 BuildRequires:	python3 >= 1:3
 BuildRequires:	python3-pygobject3 >= 3
 BuildRequires:	rpm-build >= 4.6
-BuildRequires:	rpmbuild(macros) >= 1.736
+BuildRequires:	rpmbuild(macros) >= 2.029
 BuildRequires:	tar >= 1:1.22
 %{?with_vala:BuildRequires:	vala >= 2:0.18.0}
 BuildRequires:	xz
@@ -135,9 +135,8 @@ rm -rf $RPM_BUILD_ROOT
 %ninja_install -C build
 
 %if %{with apidocs}
-# FIXME: where to package gi-docgen generated docs?
-install -d $RPM_BUILD_ROOT%{_gtkdocdir}
-%{__mv} $RPM_BUILD_ROOT%{_docdir}/libgweather-4.0 $RPM_BUILD_ROOT%{_gtkdocdir}
+install -d $RPM_BUILD_ROOT%{_gidocdir}
+%{__mv} $RPM_BUILD_ROOT%{_docdir}/libgweather-4.0 $RPM_BUILD_ROOT%{_gidocdir}
 %endif
 
 # just a copy of es
@@ -185,7 +184,7 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with apidocs}
 %files apidocs
 %defattr(644,root,root,755)
-%{_gtkdocdir}/libgweather-4.0
+%{_gidocdir}/libgweather-4.0
 %endif
 
 %if %{with vala}
