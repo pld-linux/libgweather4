@@ -93,7 +93,6 @@ Statyczna biblioteka libgweather.
 Summary:	libgweather API documentation
 Summary(pl.UTF-8):	Dokumentacja API biblioteki libgweather
 Group:		Documentation
-Requires:	gtk-doc-common
 BuildArch:	noarch
 
 %description apidocs
