@@ -120,18 +120,18 @@ API biblioteki libgweather dla języka Vala.
 %setup -q -n libgweather-%{version}
 
 %build
-%meson build \
+%meson \
 	-Denable_vala=%{!?with_vala:false}%{?with_vala:true} \
 	-Dgtk_doc=%{__true_false apidocs} \
 	%{!?with_libsoup3:-Dsoup2=true} \
 	-Dzoneinfo_dir=%{_datadir}/zoneinfo
 
-%ninja_build -C build
+%meson_build
 
 %install
 rm -rf $RPM_BUILD_ROOT
 
-%ninja_install -C build
+%meson_install
 
 %if %{with apidocs}
 install -d $RPM_BUILD_ROOT%{_gidocdir}
