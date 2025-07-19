@@ -8,7 +8,7 @@ Summary:	Library to access weather information from online services for numerous
 Summary(pl.UTF-8):	Biblioteka dostępu do informacji pogodowych z serwisów internetowych dla różnych miejsc
 Name:		libgweather4
 Version:	4.4.4
-Release:	3
+Release:	4
 License:	GPL v2+
 Group:		X11/Libraries
 Source0:	https://download.gnome.org/sources/libgweather/4.4/libgweather-%{version}.tar.xz
@@ -35,7 +35,7 @@ BuildRequires:	pkgconfig >= 1:0.19
 BuildRequires:	python3 >= 1:3
 BuildRequires:	python3-pygobject3 >= 3
 BuildRequires:	rpm-build >= 4.6
-BuildRequires:	rpmbuild(macros) >= 2.029
+BuildRequires:	rpmbuild(macros) >= 2.042
 BuildRequires:	tar >= 1:1.22
 %{?with_vala:BuildRequires:	vala >= 2:0.18.0}
 BuildRequires:	xz
@@ -116,7 +116,6 @@ libgweather API for Vala language.
 API biblioteki libgweather dla języka Vala.
 
 %prep
-#%setup -q
 %setup -q -n libgweather-%{version}
 
 %build
